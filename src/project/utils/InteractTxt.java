@@ -7,7 +7,6 @@ import project.roles.Class;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import hehehe hello;
 
 public class InteractTxt {
     public static ArrayList<Student> allStudent = new ArrayList<Student>();
