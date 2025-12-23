@@ -7,3 +7,6 @@ A Class Of ABC
 APP2FCK0000(DS)
 DigitalForensic
 
+UCDF2307ICT
+Diploma in Information & Communication Technology
+

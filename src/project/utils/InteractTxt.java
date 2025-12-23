@@ -236,9 +236,9 @@ public class InteractTxt {
         return null;
     }
     
-    public static void writeModuleTeached(){
+    public static void writeModuleTaught(){
         try{
-            PrintWriter a = new PrintWriter("src/resources/module_teached.txt");
+            PrintWriter a = new PrintWriter("src/resources/module_taught.txt");
             for(Module x : allModule){
                 for(Lecturer y : x.Mod_Lecturers){
                     a.println(x.getModuleId());
@@ -253,9 +253,9 @@ public class InteractTxt {
         }
     }
     
-    public static void readModuleTeached(){
+    public static void readModuleTaught(){
         try{
-            Scanner s1 = new Scanner(new File("src/resources/module_teached.txt"));
+            Scanner s1 = new Scanner(new File("src/resources/module_taught.txt"));
             while(s1.hasNext()){
                 String moduleId = s1.nextLine();
                 String lecturerId = s1.nextLine();
@@ -394,5 +394,20 @@ public class InteractTxt {
         }
         return null;
     }
-
+    
+    public static void initDatabase() {
+        InteractTxt.readUser();
+        InteractTxt.readIntake();
+        InteractTxt.readModuleTaught();
+        InteractTxt.readClass();
+        InteractTxt.readAssessment();
+    }
+    
+    public static void saveDatabase() {
+        InteractTxt.writeUser();
+        InteractTxt.writeIntake();
+        InteractTxt.writeModuleTaught();
+        InteractTxt.writeClass();
+        InteractTxt.writeAssessment();
+    }
 }

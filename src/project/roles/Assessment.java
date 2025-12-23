@@ -51,5 +51,7 @@ public class Assessment {
         this.assIMID = assIMID;
     }
     
-    
+    public void getAllAssDetails() {
+        System.out.println(getAssName() + ", " + getAssId() + ", " + getAssType() + ", " + getAssPercentage() + ", " + getAssIMID());
+    }
 }

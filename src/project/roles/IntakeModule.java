@@ -36,4 +36,8 @@ public class IntakeModule {
     public void setModuleId(String moduleId) {
         this.moduleId = moduleId;
     }
+    
+    public void getAllIMDetails() {
+        System.out.println(getIMID() + ", " + getIntakeId() + ", " + getModuleId());
+    }
 }
