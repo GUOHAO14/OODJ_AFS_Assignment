@@ -19,6 +19,7 @@ public class LoginPage0 extends FrameFormat {
     public LoginPage0(){
         initComponents();
         super.formatWindow("Choose Login Type");
+        System.out.println("Hello");
     }
 
     /**
