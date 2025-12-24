@@ -27,43 +27,48 @@ abstract public class FrameFormat extends JFrame {
                 String frameClassName = closingFrame.getClass().getSimpleName();
                 
                 // when 'X' button is clicked, this method runs
-                // ask for confirmation when exit
-                int choice = JOptionPane.showConfirmDialog(
+                // ask for confirmation when exit (excluding login pages)
+                if (!frameClassName.contains("LoginPage")) {
+                    
+                    int choice = JOptionPane.showConfirmDialog(
                         windowEvent.getComponent(), 
                         "Are you sure to want to exit the program? All changes will be saved.", 
                         "Exit Program", 
                         JOptionPane.YES_NO_OPTION, 
                         JOptionPane.QUESTION_MESSAGE);
                 
-                // YES triggers graceful exit, then runs shutdownHook thread (above)
-                if (choice == JOptionPane.YES_OPTION) {
-                    
-                    if (!frameClassName.contains("LoginPage")) {
-                    
-                        System.out.println(windowEvent.getComponent());
+                    // YES triggers graceful exit
+                    if (choice == JOptionPane.YES_OPTION) {
 
-                        System.out.println("--- Executing Program Termination ---");
-                        //run before shutdown
-                        //task 1: logging user data
-                        try {
-                            FileWriter writer = new FileWriter("src/resources/user_log.txt", true);
-                            writer.write("Application terminated gracefully at " + new java.util.Date() + "\n");
-                            writer.close();
-                            System.out.println("Log file updated successfully.");
+                        if (!frameClassName.contains("LoginPage")) {
 
-                        } catch (IOException e) {
-                            System.err.println("Error during shutdown cleanup: " + e.getMessage());
+                            System.out.println(windowEvent.getComponent());
+
+                            System.out.println("--- Executing Program Termination ---");
+                            //run before shutdown
+                            //task 1: logging user data
+                            try {
+                                FileWriter writer = new FileWriter("src/resources/user_log.txt", true);
+                                writer.write("Application terminated gracefully at " + new java.util.Date() + "\n");
+                                writer.close();
+                                System.out.println("Log file updated successfully.");
+
+                            } catch (IOException e) {
+                                System.err.println("Error during shutdown cleanup: " + e.getMessage());
+                            }
+                            //task 2: save all data
+
+                            InteractTxt.saveDatabase();
+                            System.out.println("Cleanup completed: Application state saved.");
+
+                            System.exit(0); 
+
                         }
-                        //task 2: save all data
-                        
-                        InteractTxt.saveDatabase();
-                        System.out.println("Cleanup completed: Application state saved.");
-
-                        System.exit(0); 
-                    
                     }
+                    else System.out.println("Continue to use the program");
+                } else {
+                    System.exit(0); 
                 }
-                else System.out.println("Continue to use the program");
             }
         });
     }
@@ -73,6 +78,7 @@ abstract public class FrameFormat extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
     }
     
     

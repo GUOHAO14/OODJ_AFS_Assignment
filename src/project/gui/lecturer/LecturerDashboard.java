@@ -4,6 +4,7 @@
  */
 package project.gui.lecturer;
 import project.utils.*;
+import project.roles.*;
 
 /**
  *
@@ -12,18 +13,23 @@ import project.utils.*;
 public class LecturerDashboard extends FrameFormat {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LecturerDashboard.class.getName());
-
+    private Lecturer sessionUser;
     /**
      * Creates new form LecturerDashboard
      */
-    public LecturerDashboard() {
+    public LecturerDashboard(Lecturer sessionUser) {
         initComponents();
         super.formatWindow("Lecturer Dashboard");
-        InteractTxt.readUser();
-        InteractTxt.readClass();
-        InteractTxt.readIntake();
-        InteractTxt.readModuleTaught();
-        InteractTxt.readAssessment();
+        this.sessionUser = sessionUser;
+        this.sessionUser.printFullLecturerData();
+        
+        sessionUser.Lec_Classes.forEach(he -> {
+            System.out.println(he.getClassId()); 
+        });
+        
+        sessionUser.Lec_Modules.forEach(he -> {
+            System.out.println(he.getModuleId()); 
+        });
     }
 
     /**
@@ -73,7 +79,7 @@ public class LecturerDashboard extends FrameFormat {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new LecturerDashboard().setVisible(true));
+//        java.awt.EventQueue.invokeLater(() -> new LecturerDashboard(new Lecturer()).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

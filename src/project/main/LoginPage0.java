@@ -4,6 +4,7 @@
  */
 package project.main;
 
+import javax.swing.JFrame;
 import project.utils.*;
 /**
  *
@@ -19,6 +20,7 @@ public class LoginPage0 extends FrameFormat {
     public LoginPage0(){
         initComponents();
         super.formatWindow("Choose Login Type");
+        InteractTxt.initDatabase();
     }
 
     /**
@@ -31,10 +33,10 @@ public class LoginPage0 extends FrameFormat {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        studentLogin = new javax.swing.JButton();
+        leaderLogin = new javax.swing.JButton();
+        adminLogin = new javax.swing.JButton();
+        lecturerLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,17 +44,17 @@ public class LoginPage0 extends FrameFormat {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Login as....");
 
-        jButton2.setText("<html><div style='text-align:center;'>Student</div></html>");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        studentLogin.setText("<html><div style='text-align:center;'>Student</div></html>");
+        studentLogin.addActionListener(this::studentLoginActionPerformed);
 
-        jButton5.setText("<html><div style='text-align:center;'>Academic Leader</div></html>");
-        jButton5.addActionListener(this::jButton5ActionPerformed);
+        leaderLogin.setText("<html><div style='text-align:center;'>Academic Leader</div></html>");
+        leaderLogin.addActionListener(this::leaderLoginActionPerformed);
 
-        jButton6.setText("<html><div style='text-align:center;'>Admin</div></html>");
-        jButton6.addActionListener(this::jButton6ActionPerformed);
+        adminLogin.setText("<html><div style='text-align:center;'>Admin</div></html>");
+        adminLogin.addActionListener(this::adminLoginActionPerformed);
 
-        jButton7.setText("<html><div style='text-align:center;'>Lecturer</div></html>");
-        jButton7.addActionListener(this::jButton7ActionPerformed);
+        lecturerLogin.setText("<html><div style='text-align:center;'>Lecturer</div></html>");
+        lecturerLogin.addActionListener(this::lecturerLoginActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,15 +64,15 @@ public class LoginPage0 extends FrameFormat {
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(leaderLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(adminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(185, 185, 185)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lecturerLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,33 +83,41 @@ public class LoginPage0 extends FrameFormat {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(studentLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lecturerLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(leaderLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void studentLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        new LoginPage1(InteractTxt.allStudent, "Student").setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_studentLoginActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void leaderLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        new LoginPage1(InteractTxt.allLeader, "Academic Leader").setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_leaderLoginActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void adminLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        new LoginPage1(InteractTxt.allAdmin, "Admin").setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_adminLoginActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void lecturerLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lecturerLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        new LoginPage1(InteractTxt.allLecturer, "Lecturer").setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lecturerLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,10 +145,10 @@ public class LoginPage0 extends FrameFormat {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton adminLogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton leaderLogin;
+    private javax.swing.JButton lecturerLogin;
+    private javax.swing.JButton studentLogin;
     // End of variables declaration//GEN-END:variables
 }

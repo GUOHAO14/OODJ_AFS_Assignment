@@ -35,6 +35,4 @@ public class Class {
     public void setLecId(String lecId) {
         this.lecId = lecId;
     }
-    
-    
 }

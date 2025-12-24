@@ -1,6 +1,6 @@
 package project.roles;
 
-abstract class User {
+public abstract class User {
     
     private final String id;
     private String name, email, password, role;
@@ -13,7 +13,7 @@ abstract class User {
         this.role = data[4];
     }
     
-    public void changeDetails(String name, String email, String password, String role) {
+    public void setDetails(String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -23,7 +23,7 @@ abstract class User {
         // add JOptionPane (class)
     }
     
-    public void changeDetails(String [] data) {
+    public void setDetails(String [] data) {
         this.name = data[1];
         this.email = data[2];
         this.password = data[3];
@@ -41,17 +41,33 @@ abstract class User {
     public String getName() {
         return this.name;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     public String getEmail() {
         return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
     public String getPW() {
         return this.password;
     }
     
+    public void setPW(String password) {
+        this.password = password;
+    }
+    
     public String getRole() {
         return this.role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
     public String[] getFullUserData() {

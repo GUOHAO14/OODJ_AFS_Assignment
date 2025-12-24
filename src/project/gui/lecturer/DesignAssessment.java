@@ -21,7 +21,6 @@ public class DesignAssessment extends FrameFormat {
     public DesignAssessment() {
         initComponents();
         super.formatWindow("Design Module Assessment");
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
         
         InteractTxt.initDatabase();
         for (IntakeModule x : InteractTxt.allIntakeModule) {
@@ -41,6 +40,27 @@ public class DesignAssessment extends FrameFormat {
         for (Assessment x : InteractTxt.allAssessment) {
             x.getAllAssDetails();
         }
+
+//        for (Lecturer x : InteractTxt.allLecturer) {
+//            System.out.println(x.getLeader().getName());
+//        }
+//        
+//        for (Leader x : InteractTxt.allLeader) {
+//            x.getFullUserData();
+//            if (x.getName().equals("keewenyew")) {
+//                x.setName("wenyew");
+//            }
+//        }
+//        
+//        for (Leader x : InteractTxt.allLeader) {
+//            System.out.println(x.getFullUserData());
+//        }
+//        
+//        for (Lecturer x : InteractTxt.allLecturer) {
+//            System.out.println(x.getLeader().getName());
+//        }
+
+            
     }
 
     /**

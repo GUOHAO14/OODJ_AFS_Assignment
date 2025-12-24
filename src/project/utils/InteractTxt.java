@@ -12,14 +12,23 @@ public class InteractTxt {
     public static ArrayList<Student> allStudent = new ArrayList<Student>();
     public static ArrayList<Leader> allLeader = new ArrayList<Leader>();
     public static ArrayList<Lecturer> allLecturer = new ArrayList<Lecturer>();
+    public static ArrayList<Admin> allAdmin = new ArrayList<Admin>();
     
     public static void writeUser(){
         try{
             PrintWriter a = new PrintWriter("src/resources/user.txt");
+            for(Admin x : allAdmin){
+                a.println(x.getId());
+                a.println(x.getName());
+                a.println(x.getEmail().toLowerCase());
+                a.println(x.getPW());
+                a.println(x.getRole());
+                a.println();
+            }
             for(Leader x : allLeader){
                 a.println(x.getId());
                 a.println(x.getName());
-                a.println(x.getEmail());
+                a.println(x.getEmail().toLowerCase());
                 a.println(x.getPW());
                 a.println(x.getRole());
                 a.println();
@@ -27,7 +36,7 @@ public class InteractTxt {
             for(Lecturer x : allLecturer){
                 a.println(x.getId());
                 a.println(x.getName());
-                a.println(x.getEmail());
+                a.println(x.getEmail().toLowerCase());
                 a.println(x.getPW());
                 a.println(x.getRole());
                 a.println();
@@ -35,7 +44,7 @@ public class InteractTxt {
             for(Student x : allStudent){
                 a.println(x.getId());
                 a.println(x.getName());
-                a.println(x.getEmail());
+                a.println(x.getEmail().toLowerCase());
                 a.println(x.getPW());
                 a.println(x.getRole());
                 a.println();
@@ -50,7 +59,7 @@ public class InteractTxt {
             PrintWriter c = new PrintWriter("src/resources/lecturer.txt");
             for(Lecturer x : allLecturer){
                 c.println(x.getId());
-                c.println(x.getLeaderId());
+                c.println(x.getLeader().getId());
                 c.println();
             }
             c.close();
@@ -83,6 +92,7 @@ public class InteractTxt {
                     case "student" -> allStudent.add(new Student(userdata));
                     case "lecturer" -> allLecturer.add(new Lecturer(userdata));
                     case "leader" -> allLeader.add(new Leader(userdata));
+                    case "admin" -> allAdmin.add(new Admin(userdata));
                 }
             }
             Scanner s2 = new Scanner(new File("src/resources/student.txt"));
@@ -99,8 +109,8 @@ public class InteractTxt {
                 String id = s3.nextLine();
                 String leaderid = s3.nextLine();
                 s3.nextLine();
-                InteractTxt.checkLecID(id).setLeaderId(leaderid);
-                InteractTxt.checkLeaID(leaderid).leaderTeam.add(InteractTxt.checkLecID(id));
+                InteractTxt.checkLecID(id).setLeader(checkLeaID(leaderid));
+                InteractTxt.checkLeaID(leaderid).leaderTeam.add(checkLecID(id));
             }
         }catch(Exception e){
             System.out.println("Error in read ..........");
@@ -357,7 +367,7 @@ public class InteractTxt {
                 a.println(x.getAssName());
                 a.println(x.getAssType());
                 a.println(x.getAssPercentage());
-                a.println(x.getAssIMID());
+                a.println(x.getAssIM().getIMID());
                 a.println();
             }
             a.close();
@@ -377,7 +387,7 @@ public class InteractTxt {
                 String percentage = s1.nextLine();
                 String IMID = s1.nextLine();
                 s1.nextLine();
-                allAssessment.add(new Assessment(id, name, type, percentage, IMID));
+                allAssessment.add(new Assessment(id, name, type, percentage, checkIMID(IMID)));
                 InteractTxt.checkIMID(IMID).IM_Assessments.add(InteractTxt.checkAssID(id));
             } 
         }catch(Exception e){

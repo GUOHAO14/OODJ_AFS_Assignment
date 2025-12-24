@@ -43,16 +43,16 @@ public class Student extends User {
     }
     
     @Override
-    public void changeDetails(String[] fullData) {
-        super.changeDetails(fullData);
+    public void setDetails(String[] fullData) {
+        super.setDetails(fullData);
         
         this.intakeId = fullData[4];
         this.dob = fullData[5];
     }
     
     // overloading
-    public void changeDetails(String[] userData, String[] studentData) {
-        super.changeDetails(userData);
+    public void setDetails(String[] userData, String[] studentData) {
+        super.setDetails(userData);
         
         this.intakeId = studentData[1];
         this.dob = studentData[2];

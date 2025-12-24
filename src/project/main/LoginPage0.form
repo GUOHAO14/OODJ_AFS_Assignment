@@ -27,16 +27,16 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton2" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
+                  <Component id="studentLogin" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jButton5" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="leaderLogin" min="-2" pref="113" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButton6" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="adminLogin" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="185" max="-2" attributes="0"/>
-                          <Component id="jButton7" min="-2" pref="113" max="-2" attributes="0"/>
+                          <Component id="lecturerLogin" min="-2" pref="113" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -52,14 +52,14 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="studentLogin" min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton7" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="lecturerLogin" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jButton5" min="-2" pref="64" max="-2" attributes="0"/>
-                  <Component id="jButton6" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="leaderLogin" min="-2" pref="64" max="-2" attributes="0"/>
+                  <Component id="adminLogin" min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
@@ -76,36 +76,36 @@
         <Property name="text" type="java.lang.String" value="Login as...."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="studentLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;Student&lt;/div&gt;&lt;/html&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentLoginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="leaderLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;Academic Leader&lt;/div&gt;&lt;/html&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leaderLoginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="adminLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;Admin&lt;/div&gt;&lt;/html&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminLoginActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="lecturerLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;div style=&apos;text-align:center;&apos;&gt;Lecturer&lt;/div&gt;&lt;/html&gt;"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lecturerLoginActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

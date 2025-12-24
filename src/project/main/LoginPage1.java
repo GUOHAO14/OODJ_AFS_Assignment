@@ -5,20 +5,35 @@ import project.utils.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
  * @author Khoo Guo Hao
  */
 public class LoginPage1 extends FrameFormat {
-
-    /**
-     * Creates new form loginPage2
-     */
-    public LoginPage1() {
-        super();
+    
+    private ArrayList<? extends User> allUserCreds = new ArrayList<>();
+    private String userType;
+    
+    
+    public LoginPage1(ArrayList<? extends User> allUserCreds, String userType) {
         initComponents();
-        super.formatWindow("Login Page");
+        super.formatWindow(userType + " Login Page");
+        
+        this.allUserCreds = allUserCreds;
+        this.userType = userType;
+        
+        System.out.println("Successfully entered login page as "+userType);
+        
+        header2Label.setText(userType + " Login");
+        for (User x : allUserCreds) {
+            System.out.println("------------");
+            String [] y = x.getFullUserData();
+            System.out.println(String.join(", ", y));
+        }
     }
 
     /**
@@ -31,15 +46,16 @@ public class LoginPage1 extends FrameFormat {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        headerLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        header2Label = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        IDField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
         passwordDisplayControl = new javax.swing.JCheckBox();
         passwordField = new javax.swing.JPasswordField();
+        backButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -54,20 +70,21 @@ public class LoginPage1 extends FrameFormat {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("APU Assessment Feedback System");
+        headerLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        headerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        headerLabel.setText("APU Assessment Feedback System");
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Login");
+        header2Label.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        header2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        header2Label.setText("Login");
 
         jLabel3.setText("User ID (TP/LC Number)");
 
-        IDField.addActionListener(new java.awt.event.ActionListener() {
+        emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IDFieldActionPerformed(evt);
+                emailFieldActionPerformed(evt);
             }
         });
 
@@ -94,30 +111,28 @@ public class LoginPage1 extends FrameFormat {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(114, 114, 114)
+                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(IDField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addComponent(emailField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(passwordDisplayControl, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordField)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(passwordField))))
                 .addContainerGap(28, Short.MAX_VALUE))
+            .addComponent(header2Label, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
+                .addComponent(header2Label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(IDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
                 .addGap(5, 5, 5)
@@ -126,45 +141,57 @@ public class LoginPage1 extends FrameFormat {
                 .addComponent(passwordDisplayControl)
                 .addGap(18, 18, 18)
                 .addComponent(login)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                        .addGap(50, 50, 50))))
+                .addContainerGap()
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(headerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(headerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(backButton)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDFieldActionPerformed
+    private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_IDFieldActionPerformed
+    }//GEN-LAST:event_emailFieldActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         
         // TODO add your handling code here:
-        String ID = IDField.getText().toUpperCase();
+        String email = emailField.getText().toLowerCase();
         String password = "";
 
         //get full password in string
@@ -172,22 +199,45 @@ public class LoginPage1 extends FrameFormat {
         for (int i = 0; i < passwordCharList.length; i++) {
             password += passwordCharList[i];
         }
+        
+        // access server file method to check credentials
+        User sessionUser = Tools.checkCredentials(allUserCreds, email, password);
+        System.out.println(sessionUser);
+        
+        if (sessionUser != null) {
+            // login success
 
-//        CheckUserData verifyCredentials = new CheckUserData(ID, password);
-        Tools.checkCredentials();
-        try { 
-//            if (verifyCredentials.CheckMatchingLoginData()) {
-//                if (ID.substring(0, 2).equals("LC")) {
-//                    new javaassignment.LecturerHomePage(ID).setVisible(true);
-//                    this.dispose();
-//                } else {
-//                    stu_home gui = new stu_home(ID);
-//                    gui.setVisible(true);
-//                    this.dispose();
-//                }
-//            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Something went wrong. Try again later.", "Database Failure", 0);
+            System.out.println("Login successful for user: " + sessionUser.getEmail());
+
+            // 3. Identify and Cast the Concrete User Type
+            if (sessionUser instanceof Student && userType.equals("Student")) {
+                Student student = (Student) sessionUser;
+//                new project.gui.student.StudentDashboard().setVisible(true);
+//                this.dispose();
+
+            } else if (sessionUser instanceof Lecturer && userType.equals("Lecturer")) {
+                Lecturer lecturer = (Lecturer) sessionUser;
+                new project.gui.lecturer.LecturerDashboard(lecturer).setVisible(true);
+                this.dispose();
+
+            } else if (sessionUser instanceof Leader) {
+                Leader leader = (Leader) sessionUser;
+//                new project.gui.leader.LeaderDashboard().setVisible(true);
+//                this.dispose();
+
+            } else if (sessionUser instanceof Admin) {
+                Admin admin = (Admin) sessionUser;
+//                new project.gui.admin.AdminDashboard(admin).setVisible(true);
+//                this.dispose();
+
+            } else {
+                // Handle an unknown subclass of User if necessary
+                System.err.println("Error: Unknown user type logged in.");
+            }
+
+        } else {
+            // --- Login FAILURE ---
+            JOptionPane.showMessageDialog(this, "Invalid Email or Password", "Login Failed", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -200,6 +250,12 @@ public class LoginPage1 extends FrameFormat {
             passwordField.setEchoChar('*');
         }
     }//GEN-LAST:event_passwordDisplayControlActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        new LoginPage0().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,15 +290,17 @@ public class LoginPage1 extends FrameFormat {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginPage1().setVisible(true);
+                InteractTxt.initDatabase();
+                new LoginPage1(InteractTxt.allStudent, "Student").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IDField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel header2Label;
+    private javax.swing.JLabel headerLabel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

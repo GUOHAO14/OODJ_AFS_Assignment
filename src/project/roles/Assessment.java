@@ -1,14 +1,15 @@
 package project.roles;
 
 public class Assessment {
-    private String assId, assName, assType, assPercentage, assIMID;
+    private String assId, assName, assType, assPercentage;
+    private IntakeModule assIM;
     
-    public Assessment(String assId, String assName, String assType, String assPercentage, String assIMID) {
+    public Assessment(String assId, String assName, String assType, String assPercentage, IntakeModule assIM) {
         this.assId = assId;
         this.assName = assName;
         this.assType = assType;
         this.assPercentage = assPercentage;
-        this.assIMID = assIMID;
+        this.assIM = assIM;
     }
 
     public String getAssId() {
@@ -43,15 +44,15 @@ public class Assessment {
         this.assPercentage = assPercentage;
     }
 
-    public String getAssIMID() {
-        return assIMID;
+    public IntakeModule getAssIM() {
+        return assIM;
     }
 
-    public void setAssIMID(String assIMID) {
-        this.assIMID = assIMID;
+    public void setAssIM(IntakeModule assIM) {
+        this.assIM = assIM;
     }
     
     public void getAllAssDetails() {
-        System.out.println(getAssName() + ", " + getAssId() + ", " + getAssType() + ", " + getAssPercentage() + ", " + getAssIMID());
+        System.out.println(getAssName() + ", " + getAssId() + ", " + getAssType() + ", " + getAssPercentage() + ", " + getAssIM().getIMID());
     }
 }

@@ -8,5 +8,5 @@ public class Leader extends User {
             
     public Leader (String[] userData) {
         super(userData);
-    } 
+    }
 }
